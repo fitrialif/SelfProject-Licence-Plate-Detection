@@ -1,6 +1,6 @@
 function location = determine_car_location(BWRef, BWInput)
     location = zeros(2, 3);
-    threshold = 78;
+    threshold = 65;
     vertical = zeros(size(BWRef, 1), 1);
     horizontal = zeros(1, size(BWRef, 2));
     difference = abs(BWRef - BWInput);
@@ -34,7 +34,7 @@ function location = determine_car_location(BWRef, BWInput)
         elseif(horizontal(1, i) >= threshold && horizontal(1, i+1) < threshold)
             values(1, 2) = i+1;
             values(1, 3) = values(1, 2) - values(1, 1) - 1;
-            if(values(1, 3) > values(2, 3))
+            if(values(1, 3) > values(2, 3) && values(1, 3) > 300)
                 for j = 1: 3
                     values(2, j) = values(1, j);
                 end
@@ -70,4 +70,8 @@ function location = determine_car_location(BWRef, BWInput)
     for i = 1: 3
         location(2, i) = values(2, i);
     end
+    
+    rectangle('Position',...
+        [location(1, 1) location(2, 1) location(1, 3) location(2, 3)],...
+        'EdgeColor', 'r', 'LineWidth', 1.5);
 end
