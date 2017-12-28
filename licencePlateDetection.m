@@ -45,15 +45,13 @@ for i = 1: v.NumberofFrames
     
     BWcrop = imbinarize(BWcrop, threshold);
     updatedStruct = determine_car_plate(BWcrop, location);
-    for j = 1: size(updatedStruct, 2)
-        corners = detect_corners(BWInput, updatedStruct(j), location);
-    end
+    
 end
 
 %%
 % myvi-70
 % waja-651
-% imageNum = 651;     %1-781
+% imageNum = 19;     %1-781
 % inputImagePath = 'C:\Users\Nelson\Desktop\Machine Vision Practical\Machine Vision Lab 2\video frames\frame';
 % inputImage = imread(strcat(inputImagePath, num2str(imageNum), '.jpg'));
 % BWInput = rgb2gray(inputImage);
@@ -64,10 +62,7 @@ end
 % 
 % BWcrop = imcrop(BWInput,...
 %     [location(1, 1) location(2, 1) location(1, 3) location(2, 3)]);
-% % figure; imshow(BWcrop); hold on;
 % 
-% BWcrop = imbinarize(BWcrop, 0.2);
+% BWcrop = imbinarize(BWcrop, 0.18);
 % updatedStruct = determine_car_plate(BWcrop, location);
-% for i = 1: size(updatedStruct, 2)
-%     corners = detect_corners(BWInput, updatedStruct(i), location);
-% end
+% figure; imshow(BWcrop);
